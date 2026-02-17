@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Play Video</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, #1a3c40 0%, #0d1a1d 100%);
+            overflow: hidden;
+        }
+
+        /* 1. Bouncing White Card */
+        .card {
+            background-color: white;
+            padding: 45px 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: cardBounce 3s ease-in-out infinite;
+        }
+
+        /* 2. Button with Moving Blue Shimmer */
+        .play-button {
+            position: relative;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 18px 30px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            text-decoration: none;
+            overflow: hidden; /* Hide the moving light outside button bounds */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        }
+
+        /* The Moving Blue Light Effect */
+        .play-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                transparent, 
+                rgba(0, 238, 255, 0.4), 
+                transparent
+            );
+            animation: blueMove 2.5s infinite;
+        }
+
+        /* 3. Bouncing Triangles */
+        .triangle {
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            position: relative;
+            z-index: 2;
+        }
+        .left { 
+            border-right: 10px solid #888; 
+            animation: triangleBounceLeft 0.8s infinite alternate;
+        }
+        .right { 
+            border-left: 10px solid #888; 
+            animation: triangleBounceRight 0.8s infinite alternate;
+        }
+
+        span { z-index: 2; }
+
+        /* --- KEYFRAMES --- */
+
+        /* Card Pulse/Bounce */
+        @keyframes cardBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.02); }
+        }
+
+        /* Left Triangle Bounce */
+        @keyframes triangleBounceLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-5px); }
+        }
+
+        /* Right Triangle Bounce */
+        @keyframes triangleBounceRight {
+            from { transform: translateX(0); }
+            to { transform: translateX(5px); }
+        }
+
+        /* Blue Light Moving Left to Right */
+        @keyframes blueMove {
+            0% { left: -150%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <a href="https://viiukuhe.com/dc/?blockID=419006" class="play-button">
+            <div class="triangle left"></div>
+            <span>PLAY VIDEO HD</span>
+            <div class="triangle right"></div>
+        </a>
+    </div>
+
+</body>
+</html>
+  
